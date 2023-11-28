@@ -1,0 +1,30 @@
+version: '3'
+services:
+
+  backend:
+    build: ./backend
+    ports:
+      - "5000:5000"
+      
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Qwer1234!
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./db/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: Qwer1234!
+      ME_CONFIG_MONGO_DB_SERVER: mongodb
+      ME_CONFIG_MONGODB_URL: "mongodb://root:Qwer1234!@mongodb:27017"
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
