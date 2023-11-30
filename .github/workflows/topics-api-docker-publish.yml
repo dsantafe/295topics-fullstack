@@ -1,4 +1,4 @@
-name: Merchandise Build and Publish
+name: Backend Build and Publish
 
 on:
   workflow_dispatch:
