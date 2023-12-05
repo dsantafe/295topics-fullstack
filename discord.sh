@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# Configura el token de acceso de tu bot de Discord
-DISCORD="https://discord.com/api/webhooks/1169002249939329156/7MOorDwzym-yBUs3gp0k5q7HyA42M5eYjfjpZgEwmAx1vVVcLgnlSh4TmtqZqCtbupov"
-
-# Verifica si se proporcionó el argumento del directorio del repositorio y el host
+# Verifica si se proporcionó el argumento del directorio del repositorio y el token de acceso
 if [ $# -ne 2 ]; then
-  echo "Uso: $0 <ruta_al_repositorio> <web_url>"
+  echo "Uso: $0 <web_url> <token_discord>"
   exit 1
 fi
 
@@ -16,7 +13,8 @@ cd "$1"
 REPO_NAME=$(basename $(git rev-parse --show-toplevel))
 # Obtiene la URL remota del repositorio
 REPO_URL=$(git remote get-url origin)
-WEB_URL="$2"
+WEB_URL="$1"
+DISCORD="$2"
 # Realiza una solicitud HTTP GET a la URL
 HTTP_STATUS=$(curl -Is "$WEB_URL" | head -n 1)
 
