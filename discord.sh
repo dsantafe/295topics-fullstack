@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Verifica si se proporcionó el argumento del directorio del repositorio y el token de acceso
-if [ $# -ne 2 ]; then
-  echo "Uso: $0 <web_url> <token_discord>"
+if [ $# -ne 3 ]; then
+  echo "Uso: $0 <ruta_al_repositorio> <web_url> <token_discord>"
   exit 1
 fi
 
@@ -13,8 +13,8 @@ cd "$1"
 REPO_NAME=$(basename $(git rev-parse --show-toplevel))
 # Obtiene la URL remota del repositorio
 REPO_URL=$(git remote get-url origin)
-WEB_URL="$1"
-DISCORD="$2"
+WEB_URL="$2"
+DISCORD="$3"
 # Realiza una solicitud HTTP GET a la URL
 HTTP_STATUS=$(curl -Is "$WEB_URL" | head -n 1)
 

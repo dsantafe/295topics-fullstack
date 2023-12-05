@@ -38,6 +38,7 @@ install_packages() {
 build_application() {
     echo "====================================="
     echo -e "\n${LYELLOW}Compilando el código de la aplicación ...${NC}"
+    cd ~/$repo
     docker-compose -p 295topics-fullstack --env-file .env.dev up -d --build
     docker ps
     echo "====================================="
@@ -67,5 +68,5 @@ echo "====================================="
 echo -e "\n${LBLUE}Ejecutar la etapa 3: [Deploy] ...${NC}"
 read -p "Ingrese el host de la aplicación: " host_url
 read -p "Ingrese el token de acceso de tu bot de Discord: " token_discord
-./discord.sh "${host_url%/}/" "${token_discord}"
+./discord.sh ~/$repo "${host_url%/}/" "${token_discord}"
 echo "====================================="
