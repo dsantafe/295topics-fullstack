@@ -47,7 +47,7 @@ Por ejemplo: API_URI: http://topics-api:5000/api/topics
 - Se Proporciona el código fuente del backend en TypeScript que utiliza el puerto 5000 y se conecta a una base de datos MongoDB.
 - Crea un Dockerfile para el backend que incluya todas las dependencias necesarias y establezca el comando de inicio.
 - Construye la imagen del backend utilizando el Dockerfile.
-    - Dentro del proyecto /frontend se encuentra su respectivo [Dockerfile](/backend//Dockerfile) con la configuración necesaria.
+    - Dentro del proyecto /backend se encuentra su respectivo [Dockerfile](/backend//Dockerfile) con la configuración necesaria.
 - Publica la imagen en Docker Hub.
     - [GitHub Actions - Backend Build and Publish](/.github/workflows/topics-api-docker-publish.yml)
 
